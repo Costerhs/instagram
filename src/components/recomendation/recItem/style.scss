@@ -1,0 +1,52 @@
+.rec__item-img {
+    position: relative;
+    .rec__online {
+        width: 7px;
+        height: 7px;
+        background: green;
+        position: absolute;
+        bottom: 6px;
+        right: 1px;
+        border-radius: 10px;
+        border: 2px solid white;
+    }
+}
+.rec__btn {
+    position: relative;
+    .rec__load {
+        position: absolute;
+        width: 15px;
+        top:-5px;
+        padding: 14px 0px;
+    }
+}
+
+.rec__btn-component {
+    background: none;
+    .rec__follow {
+        color: #0095f6;
+    }
+    .rec__unfollow {
+        color: #262626;
+    }
+}
+
+.rec__btn-page {
+    height: 32px;
+    width: 74px;
+    border-radius: 10px;
+    background: #0095f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .rec__follow {
+        color: white;
+    }
+    .rec__unfollow {
+        color: #262626;
+    }
+}
+
+.rec__btn-page-active {
+    background: #efefef;
+}

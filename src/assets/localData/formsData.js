@@ -64,7 +64,7 @@ const formsData = (watch, isSignUp) => {
                         value === watch('password') || 'Passwords do not match',
                 }
             }, {
-                name: 'Avatar',
+                name: 'avatar',
                 title: '',
                 type: 'file',
                 settings: {

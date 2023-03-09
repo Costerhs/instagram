@@ -38,6 +38,7 @@ instance.interceptors.response.use(
 
 export const usersApi = {
     register(data) {
+        console.log(data);
         data.avatar = data.avatar[0]
         const newFormData = changeObjToForm(data)
         return instance.post('users/', newFormData)
@@ -69,18 +70,15 @@ export const followApi = {
     }
 }
 
-export const getUsers = (setUsers) => {
+export const getUsers = (setUsers, isPage) => {
     Promise.all([usersApi.getUsers(), followApi.getFollowing()])
         .then(([usersObj, followObj]) => {
-            let usersArr = usersObj.data.slice(0, 6);
+            let usersArr = usersObj.data;
             let followArr = followObj.data;
-            usersArr.forEach((user) => {
-                followArr.forEach((followEl) => {
-                    if (user.id === followEl.to_user) {
-                        user.deleteId = followEl.id;
-                    }
-                })
-            })
+            usersArr = usersArr.filter(user => !followArr.some(followEl => user.id === followEl.to_user));
+            if (!isPage) {
+                usersArr = usersArr.slice(0, 6);
+            }
             setUsers(usersArr);
         })
 }

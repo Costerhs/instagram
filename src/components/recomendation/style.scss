@@ -8,6 +8,11 @@
             font-size: 14px;
             color: #8e8e8e8e;
         }   
+        .rec__title-page {
+            font-size: 16px;
+            color: #262626;
+            font-weight: bold;
+        }
         .rec__link {
             font-size: 12px;
             color: #262626;
@@ -49,16 +54,8 @@
                 }
             }
             .rec__btn {
-                background: none;
                 border: none;
-                
                 cursor: pointer;
-                .rec__follow {
-                    color: #0095f6;
-                }
-                .rec__unfollow {
-                    color: #262626;
-                }
             }
         }
     }

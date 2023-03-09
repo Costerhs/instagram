@@ -1,23 +1,27 @@
 import { useEffect, useState } from 'react'
-import { followApi, getUsers, usersApi } from '../../assets/api/api'
-import RecItem from './recItem/RecItem'
+import { NavLink } from 'react-router-dom'
+import { getUsers } from '../../assets/api/api'
 import RecList from './recList/RecList'
 import './style.scss'
 
-const Recomendation = () => {
+const Recomendation = ({ isPage }) => {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        getUsers(setUsers)
+        getUsers(setUsers, isPage)
     }, []);
 
     return (
         <div className='rec'>
             <div className="rec__title">
-                <p className='rec__title-text'>Recomendations</p>
-                <p className="rec__link">All</p>
+
+                {!isPage ? <>
+                    <p className='rec__title-text'>Recomendations</p>
+                    <NavLink to={'/recomendation'} className="rec__link">All</NavLink>  </>
+                    : <p className='rec__title-page'>Recomendations</p>}
+
             </div>
-            <RecList users={users} />
+            <RecList isPage={isPage} users={users} />
         </div>
     )
 }
