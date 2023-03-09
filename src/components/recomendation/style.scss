@@ -1,0 +1,65 @@
+.rec {
+    width: 350px;
+    .rec__title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .rec__title-text {
+            font-size: 14px;
+            color: #8e8e8e8e;
+        }   
+        .rec__link {
+            font-size: 12px;
+            color: #262626;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    }
+    .rec__list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .rec__item {
+            display: flex;
+            justify-content: space-between;
+            .rec__info {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                img {
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 100%;
+                }
+                .rec__con {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .rec__name {
+                        font-size: 14px;
+                        color: #262626;
+                        margin: 0;
+                        font-weight: 500;
+                    }
+                    .rec__followers {
+                        font-size: 12px;
+                        color: #8e8e8e;
+                    }
+                }
+            }
+            .rec__btn {
+                background: none;
+                border: none;
+                
+                cursor: pointer;
+                .rec__follow {
+                    color: #0095f6;
+                }
+                .rec__unfollow {
+                    color: #262626;
+                }
+            }
+        }
+    }
+}

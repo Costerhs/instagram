@@ -1,0 +1,16 @@
+.signUp__link {
+    border: 1px solid #dbdbdb;
+    padding:10px 40px;
+    max-width: 270px;
+    width: 100%;
+    font-size: 14px;
+    a {
+        text-decoration: none;
+    }
+}
+
+@media (max-width:350px) {
+    .signUp__link {
+        border: 0;
+    }
+}
