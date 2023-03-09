@@ -3,7 +3,7 @@ const formsData = (watch, isSignUp) => {
         return [
             {
                 name: 'username',
-                title: 'Имя пользователя',
+                title: 'username',
                 type: 'text',
                 settings: {
                     required: true
@@ -11,7 +11,7 @@ const formsData = (watch, isSignUp) => {
             },
             {
                 name: 'first_name',
-                title: 'Имя',
+                title: 'Firstname',
                 type: 'text',
                 settings: {
                     required: true
@@ -19,7 +19,7 @@ const formsData = (watch, isSignUp) => {
             },
             {
                 name: 'last_name',
-                title: 'Фамилие',
+                title: 'Lastname',
                 type: 'text',
                 settings: {
                     required: true
@@ -28,7 +28,7 @@ const formsData = (watch, isSignUp) => {
 
             {
                 name: 'bio',
-                title: 'Биография',
+                title: 'Bio',
                 type: 'text',
                 settings: {
                     required: true
@@ -47,7 +47,7 @@ const formsData = (watch, isSignUp) => {
             },
             {
                 name: 'password',
-                title: 'Пароль',
+                title: 'Password',
                 type: 'password',
                 settings: {
                     required: true,
@@ -56,7 +56,7 @@ const formsData = (watch, isSignUp) => {
             },
             {
                 name: 'password_repeat',
-                title: 'Подтвердить пароль',
+                title: 'Password repeat',
                 type: 'password',
                 settings: {
                     required: true,
@@ -64,7 +64,7 @@ const formsData = (watch, isSignUp) => {
                         value === watch('password') || 'Passwords do not match',
                 }
             }, {
-                name: 'avatar',
+                name: 'Avatar',
                 title: '',
                 type: 'file',
                 settings: {
@@ -76,7 +76,7 @@ const formsData = (watch, isSignUp) => {
     return [
         {
             name: 'username',
-            title: 'Имя пользователя',
+            title: 'Username',
             type: 'text',
             settings: {
                 required: true
@@ -84,7 +84,7 @@ const formsData = (watch, isSignUp) => {
         },
         {
             name: 'password',
-            title: 'Пароль',
+            title: 'Password',
             type: 'password',
             settings: {
                 required: true,

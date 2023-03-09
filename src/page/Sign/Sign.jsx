@@ -51,7 +51,7 @@ const Sign = () => {
             <div className="sign__form-block">
                 <i className="sign__img" />
                 {isSignUp && <h1 className="sign__title">
-                    Зарегистрируйтесь, чтобы смотреть фото и видео ваших друзей.
+                    Register to see photos and videos of your friends.
                 </h1>}
                 <form onSubmit={handleSubmit(onSubmit)} className="sign__form">
                     {formsData(watch, isSignUp).map((el, ind) => {
@@ -66,15 +66,12 @@ const Sign = () => {
                     </p>
                     {isSignUp && <SignUpInfo />}
                     <button type='submit' className="sign__btn">
-                        {isSignUp ? 'Регистрация' : 'Вход'}
+                        {isSignUp ? 'Sign Up' : 'Sign In'}
                     </button>
                 </form>
 
             </div>
             <SignLink isSignUp={isSignUp} />
-            <div className="sign__download">
-
-            </div>
         </div >
     )
 }

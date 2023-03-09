@@ -5,7 +5,7 @@ const SignLink = ({ isSignUp }) => {
     return (
         <div className="signUp__link">
             <p className="signUp__switch">
-                {!isSignUp ? 'Уже зарегистрированы?' : 'Есть аккаунт?'} <NavLink to={isSignUp ? '/signIn' : '/signUp'}>{!isSignUp ? 'Регистрация' : 'Вход'}</NavLink>
+                {!isSignUp ? 'Not registered yet?' : 'Have account?'} <NavLink to={isSignUp ? '/signIn' : '/signUp'}>{!isSignUp ? 'Sign up' : 'Sign in'}</NavLink>
             </p>
         </div>
     )

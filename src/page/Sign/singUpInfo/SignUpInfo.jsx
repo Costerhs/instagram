@@ -5,23 +5,23 @@ export const SignUpInfo = () => {
         <>
             <div className="signUp__info">
                 <p className="signUp__info-p">
-                    Люди, которые пользуются нашим сервисом,
-                    могли загрузить вашу контактную информацию в Instagram.
+                    People who use our service
+                    could upload your contact information to Instagram.
                     <a href="https://www.facebook.com/help/instagram/261704639352628">
-                        Подробнее
+                        More
                     </a>
                 </p>
 
             </div>
             <div className="signUp__info">
                 <p className="signUp__info-p">
-                    Регистрируясь, вы принимаете наши
+                    By registering, you accept our
                     <a href="https://help.instagram.com/581066165581870/?locale=ru_RU">
-                        Условия, Политику конфиденциальности
+                        Terms, Privacy Policy
                     </a>
                     <span>и</span>
                     <a href="https://help.instagram.com/1896641480634370/">
-                        Политику в отношении файлов cookie.
+                        Cookie Policy.
                     </a>
                 </p>
             </div></>
