@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { followApi, usersApi } from '../../assets/api/api';
+import { followApi, getUser, usersApi } from '../../assets/api/api';
 import load from '../../assets/img/followLoad.gif'
 import PostList from './post/PostList';
 import './style.scss'
@@ -11,10 +11,7 @@ const User = () => {
     const userId = useParams().id
     const [isLoad, setIsLoad] = useState(false)
     useEffect(() => {
-        usersApi.getUser(userId)
-            .then(el => {
-                setUser(el.data);
-            })
+        getUser(setUser, userId)
     }, [])
 
     const handleFollow = () => {
@@ -53,19 +50,31 @@ const User = () => {
                         </button>
                     </div>
                     <div className="user__info">
-                        <p className="user__subs">
+                        <div className="user__subs">
                             <span>{user.subscriptions}</span> subscriptions
-                        </p>
-                        <p className="user__subs">
+                        </div>
+                        <div className="user__subs">
                             <span>{user.subscribers}</span> subscribers
-                        </p>
+                        </div>
                     </div>
                     <p className="user__firstname">
                         {user.first_name}
                     </p>
                 </div>
             </div>
-            {/* <PostList id={userId} /> */}
+            <div className="user__firstname-phone">
+                <p>{user.first_name}</p>
+                <p>{user.bio}</p>
+            </div>
+            <div className="user__info-phone">
+                <p className="user__subs">
+                    <span>{user.subscriptions}</span>  <p>subscriptions</p>
+                </p>
+                <p className="user__subs">
+                    <span>{user.subscribers}</span> <p>subscribers</p>
+                </p>
+            </div>
+            <PostList id={userId} />
         </div>
     );
 }

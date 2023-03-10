@@ -1,40 +1,12 @@
 import axios from "axios";
-import { changeObjToForm } from "../defFunction/defFunction";
+import { changeObjToForm, setLocal } from "../defFunction/defFunction";
 
 const instance = axios.create({
     baseURL: `https://cryxxxen.pythonanywhere.com/`
 });
 // let header = { Authorization: `Bearer ${localStorage.getItem("token")}` }
 
-instance.interceptors.request.use(
-    function (config) {
-        const token = localStorage.getItem("access");
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-    },
-    function (error) {
-        if (error.response && error.response.status === 403) {
-            // перенаправить на другую страницу
-            console.log("Ошибка 403: недостаточно прав для выполнения операции");
-        }
-        return Promise.reject(error);
-    }
-);
 
-instance.interceptors.response.use(
-    function (response) {
-        return response;
-    },
-    function (error) {
-        if (error.response && error.response.status === 403) {
-            // перенаправить на другую страницу
-            console.log("Ошибка 403: недостаточно прав для выполнения операции");
-        }
-        return Promise.reject(error);
-    }
-);
 
 export const usersApi = {
     register(data) {
@@ -51,6 +23,13 @@ export const usersApi = {
     },
     getUser(id) {
         return instance.get(`/users/${id}/`)
+    },
+    refreshToken() {
+        let refresh = localStorage.getItem('refresh')
+        let obj = {
+            'refresh': refresh
+        }
+        return instance.post('token/refresh/', obj)
     }
 }
 
@@ -82,7 +61,19 @@ export const getUsers = (setUsers, isPage) => {
             setUsers(usersArr);
         })
 }
-
+export const getUser = (setUser, id) => {
+    Promise.all([usersApi.getUser(id), followApi.getFollowing()])
+        .then(([userObj, followObj]) => {
+            //беру пользователя и данные из моих подписок и по условию если я на него подписан то добавляю свойсвто deleteId чтобы работал запрос для отписки
+            let userArr = userObj.data;
+            let followArr = followObj.data;
+            let isFollow = followArr.find(followEl => userArr.id === followEl.to_user)
+            if (isFollow) {
+                userArr = { ...userArr, deleteId: isFollow.id }
+            }
+            setUser(userArr)
+        })
+}
 export const postApi = {
     getPostOfUser(id) {
         //нету запроса чтобы получить посты опредленного пользователя
@@ -93,3 +84,43 @@ export const postApi = {
             })
     }
 }
+
+
+
+
+
+
+
+instance.interceptors.request.use(
+    function (config) {
+        const token = localStorage.getItem("access");
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    function (error) {
+        if (error.response && error.response.status === 403) {
+            // перенаправить на другую страницу
+            console.log("Ошибка 403: недостаточно прав для выполнения операции");
+        }
+        return Promise.reject(error);
+    }
+);
+
+instance.interceptors.response.use(
+    function (response) {
+        return response;
+    },
+    function (error) {
+        if (error.response && error.response.status === 403) {
+            // перенаправить на другую страницу
+            usersApi.refreshToken()
+                .then(el => {
+                    setLocal("access", el.data.access)
+                })
+            console.log("Ошибка 403: недостаточно прав для выполнения операции");
+        }
+        return Promise.reject(error);
+    }
+);

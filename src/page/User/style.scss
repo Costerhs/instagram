@@ -6,6 +6,7 @@
     .user__top {
         display: flex;
         gap: 120px;
+        margin-bottom: 20px;
     }
     .user__img {
         img {
@@ -17,6 +18,7 @@
     .user__data {
         display: flex;
         flex-direction: column;
+        gap: 10px;
         .user__action {
             display: flex;
             gap: 20px;
@@ -63,6 +65,8 @@
                 color: #262626;
                 font-size: 16px;
                 font-weight: 500;
+                display: flex;
+                gap: 4px;
                 span {
                     font-weight: 600;
                 }
@@ -74,6 +78,13 @@
             font-weight: 600;
             text-align: left;
         }
+        
+    }
+    .user__firstname-phone {
+        display: none;
+    }
+    .user__info-phone {
+        display: none;
     }
     
 }
@@ -112,6 +123,29 @@
             }
             .user__firstname {
                 display: none;
+            }
+        }
+        .user__firstname-phone {
+            text-align: left;
+            margin-bottom: 4px;
+            display: block;
+            p {
+                margin: 0;
+                margin-top: 4px;
+            }
+        }
+        .user__info-phone {
+            display: flex;
+            gap: 20px;
+            border-top: 1px solid rgb(219,219,219);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            .user__subs {
+                flex-direction: column;
+                margin: 0;
+                span{
+                    font-weight: 600;
+                }
             }
         }
     }
