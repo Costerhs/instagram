@@ -49,9 +49,9 @@ export const usersApi = {
     getUsers() {
         return instance.get('users/')
     },
-    // getUser(id) {
-    //     return instance.get(`/users/${id}/`)
-    // }
+    getUser(id) {
+        return instance.get(`/users/${id}/`)
+    }
 }
 
 export const followApi = {
@@ -81,4 +81,15 @@ export const getUsers = (setUsers, isPage) => {
             }
             setUsers(usersArr);
         })
+}
+
+export const postApi = {
+    getPostOfUser(id) {
+        //нету запроса чтобы получить посты опредленного пользователя
+        //поэтому беру все посты и отфильтроваываю чтобы остались посты определенного пользователя
+        return instance.get(`posts/`)
+            .then(res => {
+                return res.data.filter(data => data.user == id)
+            })
+    }
 }

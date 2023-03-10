@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react'
 import { followApi } from '../../../assets/api/api'
 import './style.scss'
 import load from '../../../assets/img/followLoad.gif'
+import { NavLink } from 'react-router-dom'
+import avatar from '../../../assets/img/avatar.jpg'
 
 const RecItem = ({ data, isPage }) => {
     const [userData, setUserData] = useState(data)
     const [isLoad, setIsLoad] = useState(false)
-
 
     useEffect(() => {
         console.log(isLoad);
@@ -33,12 +34,12 @@ const RecItem = ({ data, isPage }) => {
     return (
         <div className="rec__item">
             <div className="rec__info">
-                <div className="rec__item-img">
-                    <img src="https://avatars.mds.yandex.net/i?id=5015c8c019f583020415f97b60b1479429fd9efa-9181298-images-thumbs&n=13" className='rec__image' alt="ava" />
+                <NavLink to={`/user/${userData.id}`} className="rec__item-img">
+                    <img src={userData.avatar ? userData.avatar : avatar} className='rec__image' alt="ava" />
                     {userData.is_online && <div className="rec__online"></div>}
-                </div>
+                </NavLink>
                 <div className="rec__con">
-                    <p className="rec__name">{userData.username}</p>
+                    <NavLink to={`/user/${userData.id}`} className="rec__name">{userData.username}</NavLink>
                     <div className="rec__followers">Followers: {userData.subscribers}</div>
                 </div>
             </div>

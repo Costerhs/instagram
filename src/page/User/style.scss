@@ -1,0 +1,124 @@
+.user {
+    width: 100%;
+    max-width: 935px;
+    display: flex;
+    flex-direction: column;
+    .user__top {
+        display: flex;
+        gap: 120px;
+    }
+    .user__img {
+        img {
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+        }
+    }
+    .user__data {
+        display: flex;
+        flex-direction: column;
+        .user__action {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            .user__name {
+                font-size: 20px;
+                color: #262626;
+            }
+            .user__btn {
+                height: 32px;
+                width: 74px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border:0;
+                cursor: pointer;
+                position: relative;
+                .rec__load {
+                    position: absolute;
+                    width: 15px;
+                    top:-5px;
+                    padding: 14px 0px;
+                }
+                .user__follow {
+                    color: white;
+                }
+                .user__unfollow {
+                    color: #262626;
+                }
+            }
+            
+            .user__btn-active {
+                background: #efefef;
+            }
+            .user__btn-passive {
+                background: #0095f6;
+            }
+        }
+        .user__info {
+            display: flex;
+            gap: 20px;
+            .user__subs {
+                color: #262626;
+                font-size: 16px;
+                font-weight: 500;
+                span {
+                    font-weight: 600;
+                }
+            }
+        }
+        .user__firstname {
+            font-size: 14px;
+            color: #262626;
+            font-weight: 600;
+            text-align: left;
+        }
+    }
+    
+}
+
+@media (max-width:576px) {
+    .user {
+        .user__top {
+            gap: 50px;
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .user {
+        .user__top {
+            gap: 40px;
+        }
+        .user__img {
+            display: flex;
+            align-items: center;
+            img {
+                width: 77px;
+                height: 77px;
+            }
+        }
+        .user__data {
+            .user__action {
+                flex-direction: column;
+                gap: 10px;
+                .user__name {
+                    margin: 0;
+                }
+            }
+            .user__info {
+                display: none;
+            }
+            .user__firstname {
+                display: none;
+            }
+        }
+    }
+}
+
+
+
+
+
+
